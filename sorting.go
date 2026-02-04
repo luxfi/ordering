@@ -8,7 +8,7 @@ import (
 	"cmp"
 	"slices"
 
-	hashing "github.com/luxfi/crypto/hash"
+	"github.com/luxfi/crypto/hash"
 )
 
 type Sortable[T any] interface {
@@ -23,8 +23,8 @@ func Sort[T Sortable[T]](s []T) {
 // Sorts the elements of [s] based on their hashes.
 func SortByHash[T ~[]byte](s []T) {
 	slices.SortFunc(s, func(i, j T) int {
-		iHash := hashing.ComputeHash256(i)
-		jHash := hashing.ComputeHash256(j)
+		iHash := hash.ComputeHash256(i)
+		jHash := hash.ComputeHash256(j)
 		return bytes.Compare(iHash, jHash)
 	})
 }
@@ -65,10 +65,10 @@ func IsSortedAndUniqueByHash[T ~[]byte](s []T) bool {
 	if len(s) <= 1 {
 		return true
 	}
-	rightHash := hashing.ComputeHash256(s[0])
+	rightHash := hash.ComputeHash256(s[0])
 	for i := 1; i < len(s); i++ {
 		leftHash := rightHash
-		rightHash = hashing.ComputeHash256(s[i])
+		rightHash = hash.ComputeHash256(s[i])
 		if bytes.Compare(leftHash, rightHash) != -1 {
 			return false
 		}
