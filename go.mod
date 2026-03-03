@@ -1,6 +1,6 @@
 module github.com/luxfi/ordering
 
-go 1.25.5
+go 1.26
 
 require github.com/luxfi/crypto v1.17.40
 
