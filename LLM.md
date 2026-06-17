@@ -1,4 +1,4 @@
-# LLM.md - Hanzo Ordering
+# Hanzo Ordering
 
 ## Overview
 Go module: github.com/luxfi/ordering
